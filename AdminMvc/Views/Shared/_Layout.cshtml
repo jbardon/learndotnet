@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    
+    @* Load the style (defined in BundleConfig) *@
+    @Styles.Render("~/Content")
+</head>
+<body>
+    <h1>Menu</h1>
+    <p id="replace_with_js"></p>
+
+    @* Renders the view *@
+    @RenderBody()
+
+    @{
+        Html.RenderPartial("Scripts");
+    }
+
+    @*
+        Automatically include a section defined in children views    
+        
+        @RenderSection("name")
+        @section name {
+            
+        }
+    *@
+</body>
+</html>

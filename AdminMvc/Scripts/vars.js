@@ -1,0 +1,1 @@
+document.message = 'Updated with JavaScript';

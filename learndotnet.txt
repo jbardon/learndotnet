@@ -1,0 +1,31 @@
+Dependencies
+- In the solution folder (packages)
+- Folder with name + version 
+    - .nupkg file
+    - lib directory: dll (library code), pdb (debug), xml (documentation)
+    
+Build
+  - bin: compiled project
+  - obj: debuging
+    
+Project
+- packages.config: dependencies
+- .csproj: files to include, libs and build
+- Web.config: build configuration
+
+- Global.asax.cs: entry point loading config from App_Start folder
+
+IIS
+- Create Application pool
+- Create Site 
+  - with path to project directory
+  - using the created pool
+  - check links and set site url
+  - add site url in host file
+  
+ASP MVC
+- Controllers containing actions and fill the model
+- Models injected into the view
+- Views razor pages using data from the model
+- Content css to include in views
+- Scripts js to bundle and include in views
