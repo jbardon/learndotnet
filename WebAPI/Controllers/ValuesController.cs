@@ -1,20 +1,30 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
+using Newtonsoft.Json;
 
 namespace WebAPI.Controllers
 {
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public HttpResponseMessage Get()
         {
-            return new string[] { "value1", "value2" };
+            return Request.CreateResponse(HttpStatusCode.OK, new [] {"value1", "value2"});
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public HttpResponseMessage Get(int id)
         {
-            return "value";
+            var a = new Toto()
+            {
+                Hello = "World"
+            };
+            // When returning object, ASP chooses automaticcaly the JsonFormatter
+            // The formatter depends on accept header and returned body
+            return Request.CreateResponse(HttpStatusCode.OK, a/*, Configuration.Formatters.JsonFormatter*/);
         }
 
         // POST api/values
@@ -31,5 +41,10 @@ namespace WebAPI.Controllers
         public void Delete(int id)
         {
         }
+    }
+
+    class Toto
+    {
+        public String Hello;
     }
 }

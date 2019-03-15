@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
+using System.Web.Http;
 
 namespace WebAPI
 {
@@ -16,7 +18,15 @@ namespace WebAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            
+  
+            // Only keep JSON formatter to force serialize response in JSON
+            //config.Formatters.Clear();
+            //config.Formatters.Add(new JsonMediaTypeFormatter());
+
+//            config.Formatters.JsonFormatter.SupportedMediaTypes
+//                .Add(new MediaTypeHeaderValue("text/html"));
+
+
             /**
                 config.Routes.MapHttpRoute(
                     name: "DefaultApi",
