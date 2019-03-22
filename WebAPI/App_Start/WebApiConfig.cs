@@ -11,21 +11,30 @@ namespace WebAPI
             // Web API configuration and services
 
             // Web API routes
+            
+            // Attribute routing (method 1)
+            // https://docs.microsoft.com/en-us/aspnet/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
             config.MapHttpAttributeRoutes();
 
+            
+            // Convention based routing (method 2)
+            // https://docs.microsoft.com/en-us/aspnet/web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api
             config.Routes.MapHttpRoute( // Different from MapRoute for MVC
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
   
-            // Only keep JSON formatter to force serialize response in JSON
-            //config.Formatters.Clear();
-            //config.Formatters.Add(new JsonMediaTypeFormatter());
+            /* Hacks for JSON only serialization
+                - Only keep JSON formatter to force serialize response in JSON
+                    config.Formatters.Clear();
+                    config.Formatters.Add(new JsonMediaTypeFormatter());
 
-//            config.Formatters.JsonFormatter.SupportedMediaTypes
-//                .Add(new MediaTypeHeaderValue("text/html"));
-
+                - Response with JSON when the Accept header is html (from browser)
+                    config.Formatters.JsonFormatter.SupportedMediaTypes
+                    .Add(new MediaTypeHeaderValue("text/html"));
+            */
+            
 
             /**
                 config.Routes.MapHttpRoute(

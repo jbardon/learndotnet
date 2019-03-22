@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Newtonsoft.Json;
 
 namespace WebAPI.Controllers
 {
+    // For Attribute routing
+    [RoutePrefix("api/values")]
     public class ValuesController : ApiController
     {
         // GET api/values
@@ -15,18 +15,32 @@ namespace WebAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, new [] {"value1", "value2"});
         }
 
+        // FromUri optional for convention based routing
         // GET api/values/5
-        public HttpResponseMessage Get(int id)
-        {
+        public HttpResponseMessage Get([FromUri] int id)
+        {            
             var a = new Toto()
             {
-                Hello = "World"
+                Hello = "World",
+                Id = id
             };
-            // When returning object, ASP chooses automaticcaly the JsonFormatter
-            // The formatter depends on accept header and returned body
+            
+            // When returning object, ASP.NET chooses automatically the Formatter (serializer)
+            // The formatter depends on Request Accept Header and returned payload type (serializable or not ?)
             return Request.CreateResponse(HttpStatusCode.OK, a/*, Configuration.Formatters.JsonFormatter*/);
         }
 
+        // For Attribute routing
+        // With PathParam and QueryParams
+        // GET api/values/{name}/details?lang=fr
+        [Route("{name}/details")]
+        public HttpResponseMessage GetDetails([FromUri] string name, string lang)
+        {
+            // Install System.ValueTuple
+            var tuple = (name: name, lang: lang);
+            return Request.CreateResponse(HttpStatusCode.OK, tuple);
+        }
+        
         // POST api/values
         public void Post([FromBody]string value)
         {
@@ -43,8 +57,11 @@ namespace WebAPI.Controllers
         }
     }
 
-    class Toto
+    //[DataContract] (optional for XML formatter)
+    public class Toto
     {
-        public String Hello;
+        //[DataMember] (optional for XML formatter)
+        public string Hello;
+        public int Id;
     }
 }
