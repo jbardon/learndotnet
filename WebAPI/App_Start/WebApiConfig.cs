@@ -16,15 +16,19 @@ namespace WebAPI
             // https://docs.microsoft.com/en-us/aspnet/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2
             config.MapHttpAttributeRoutes();
 
-            
             // Convention based routing (method 2)
             // https://docs.microsoft.com/en-us/aspnet/web-api/overview/web-api-routing-and-actions/routing-in-aspnet-web-api
             config.Routes.MapHttpRoute( // Different from MapRoute for MVC
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                name: "ByController",
+                routeTemplate: "api/{controller}/{id}", // Id to not clash with "api/{controller}/{action}" 
                 defaults: new { id = RouteParameter.Optional }
             );
-  
+
+            config.Routes.MapHttpRoute( // Different from MapRoute for MVC
+                name: "ByControllerAndName",
+                routeTemplate: "api/{controller}/{action}"
+            );
+
             /* Hacks for JSON only serialization
                 - Only keep JSON formatter to force serialize response in JSON
                     config.Formatters.Clear();
@@ -34,7 +38,7 @@ namespace WebAPI
                     config.Formatters.JsonFormatter.SupportedMediaTypes
                     .Add(new MediaTypeHeaderValue("text/html"));
             */
-            
+
 
             /**
                 config.Routes.MapHttpRoute(
