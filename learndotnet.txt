@@ -29,3 +29,21 @@ ASP MVC
 - Views razor pages using data from the model
 - Content css to include in views
 - Scripts js to bundle and include in views
+
+Install packages nugget (update après add): nuget restore
+
+Gestion packages nugget avec Package Manager Console (in VisualStudio)
+
+- Install package in project (update packages.config)
+```
+PM> get-help NuGet
+PM> Find-Package autofac
+PM> Install-Package Autofac
+PM> Install-Package Autofac.WebApi2
+```
+
+- Download actual dependencies (restore, download in packages directory)
+with nugget CLI
+```
+$ nugget restore
+```

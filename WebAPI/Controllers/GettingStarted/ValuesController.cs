@@ -1,9 +1,8 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace WebAPI.Controllers
+namespace WebAPI.Controllers.GettingStarted
 {
     // This controller uses Convention based routing
     // See WebApiConfig: config.Routes.MapHttpRoute

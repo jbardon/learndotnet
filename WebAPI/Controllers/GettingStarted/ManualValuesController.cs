@@ -1,9 +1,8 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace WebAPI.Controllers
+namespace WebAPI.Controllers.GettingStarted
 {
     // This controller uses Attribute routing
     // See WebApiConfig: config.Routes.MapHttpAttributeRoutes();
@@ -17,7 +16,6 @@ namespace WebAPI.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, "Empty route for controller root route");
         }
-        
 
         // GET /api/manual/action/name
         [Route("action/name")]
