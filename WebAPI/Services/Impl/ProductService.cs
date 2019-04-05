@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Mapster;
-using SmartAdLibrary.Model;
 using WebAPI.Models.CriteriaDto;
 using WebAPI.Models.Dto;
 using WebAPI.Utils;
-using SmartAdServices = SmartAdLibrary.Services;
+//using SmartAdServices = SmartAdLibrary.Services;
+using SmartAdServices = WebAPI.SmartAdLocal;
 
 namespace WebAPI.Services.Impl
 {
@@ -36,7 +36,7 @@ namespace WebAPI.Services.Impl
         public IList<ProductDto> Search(ProductSearchCriteria criteria)
         {
             var products = _smartAdService.GetAll();
-            IEnumerable<Product> filteredProducts = products;
+            IEnumerable<SmartAdLocal.Product> filteredProducts = products;
             
             if (criteria.Make != null)
             {

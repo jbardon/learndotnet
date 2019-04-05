@@ -4,7 +4,7 @@ using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
 using WebAPI.Utils;
-using SmartAd = SmartAdLibrary.Services;
+//using SmartAd = SmartAdLibrary.Services;
 
 namespace WebAPI
 {
@@ -41,7 +41,7 @@ namespace WebAPI
             //builder.RegisterModule<ServicesModule>();
 
             // Register services from ProjectReference
-            builder.RegisterModule<SmartAd.ServiceModule>();
+            //builder.RegisterModule<SmartAd.ServiceModule>();
         }
     }
 }

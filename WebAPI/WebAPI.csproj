@@ -82,6 +82,11 @@
     <Compile Include="Services\Impl\ProductService.cs" />
     <Compile Include="Services\IProductService.cs" />
     <Compile Include="Services\ServicesModule.cs" />
+    <Compile Include="SmartAdLocal\IProductService.cs" />
+    <Compile Include="SmartAdLocal\MeasurementUnit.cs" />
+    <Compile Include="SmartAdLocal\Product.cs" />
+    <Compile Include="SmartAdLocal\ProductService.cs" />
+    <Compile Include="SmartAdLocal\Quantity.cs" />
     <Compile Include="Utils\Injectable.cs" />
     <Compile Include="Utils\Mapper.cs" />
   </ItemGroup>
@@ -100,10 +105,11 @@
   </ItemGroup>
   <ItemGroup>
     <!-- Bad pratice: include another project -->
+    <!--
     <ProjectReference Include="..\SmartAdLibrary\SmartAdLibrary.csproj">
       <Project>{f2006d53-0ca3-487f-aeb8-dafdebcf1fa9}</Project>
       <Name>SmartAdLibrary</Name>
-    </ProjectReference>
+    </ProjectReference>-->
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

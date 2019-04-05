@@ -1,7 +1,7 @@
 using Mapster;
-using SmartAdLibrary.Model;
 using WebAPI.Models.Dto;
 using WebAPI.Utils;
+using WebAPI.SmartAdLocal;
 
 namespace WebAPI.Mapping
 {
