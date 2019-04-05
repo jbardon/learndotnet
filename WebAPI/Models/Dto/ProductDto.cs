@@ -6,6 +6,6 @@ namespace WebAPI.Models.Dto
         
         public string Name { get; set; }
         
-        public bool IsOld { get; set; }
+        public double Price { get; set; }
     }
 }

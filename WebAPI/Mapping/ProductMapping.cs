@@ -1,5 +1,5 @@
 using Mapster;
-using WebAPI.Models.Domain;
+using SmartAdLibrary.Model;
 using WebAPI.Models.Dto;
 using WebAPI.Utils;
 
@@ -33,7 +33,7 @@ namespace WebAPI.Mapping
                     
             dto.Id = domain.UniqueId;
             dto.Name = domain.FullName;
-            dto.IsOld = domain.IsOld;
+            dto.Price = domain.Price;
                     
             return domain;
         }

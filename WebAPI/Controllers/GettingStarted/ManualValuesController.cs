@@ -1,6 +1,8 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.ValueProviders;
+using System.Web.Http.ValueProviders.Providers;
 
 namespace WebAPI.Controllers.GettingStarted
 {
@@ -62,6 +64,18 @@ namespace WebAPI.Controllers.GettingStarted
         [HttpGet]
         [Route("both-params/{id}")]
         public HttpResponseMessage PathAndQueryParams(string name, int id)
+        {
+            var tuple = (id: id, name: name);
+            return Request.CreateResponse(HttpStatusCode.OK, tuple);
+        }
+        
+        // If id appears in both RouteDictionary and QueryString (with ?), the QueryString overloads
+        // Except by defining the Value Provider (RouteDataValueProviderFactory or QueryStringValueProvider)
+        // https://www.strathweb.com/2013/04/asp-net-web-api-and-greedy-query-string-parameter-binding/
+        // GET api/manual/both-params/{id}?name=fr?id=1
+        [HttpGet]
+        [Route("both-params/no-overwrite/{id}")]
+        public HttpResponseMessage PathAndQueryParamsNoOverwrite(string name, [ValueProvider(typeof(RouteDataValueProviderFactory))] int id)
         {
             var tuple = (id: id, name: name);
             return Request.CreateResponse(HttpStatusCode.OK, tuple);
