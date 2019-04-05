@@ -6,6 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminMvc", "AdminMvc\AdminMvc.csproj", "{00895636-8CAF-46EC-9F56-6743FC3CF217}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{0AD9F45C-5C2A-4B41-9EA4-EBD2CC4C5903}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F2006D53-0CA3-487F-AEB8-DAFDEBCF1FA9} = {F2006D53-0CA3-487F-AEB8-DAFDEBCF1FA9}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartAdLibrary", "SmartAdLibrary\SmartAdLibrary.csproj", "{F2006D53-0CA3-487F-AEB8-DAFDEBCF1FA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +26,10 @@ Global
 		{0AD9F45C-5C2A-4B41-9EA4-EBD2CC4C5903}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AD9F45C-5C2A-4B41-9EA4-EBD2CC4C5903}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AD9F45C-5C2A-4B41-9EA4-EBD2CC4C5903}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2006D53-0CA3-487F-AEB8-DAFDEBCF1FA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2006D53-0CA3-487F-AEB8-DAFDEBCF1FA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2006D53-0CA3-487F-AEB8-DAFDEBCF1FA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2006D53-0CA3-487F-AEB8-DAFDEBCF1FA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

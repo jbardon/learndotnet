@@ -55,7 +55,8 @@ https://blog.nuget.org/20170316/NuGet-now-fully-integrated-into-MSBuild.html#wha
 Web api
 https://docs.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/parameter-binding-in-aspnet-web-api
 https://docs.microsoft.com/en-us/aspnet/web-api/overview/web-api-routing-and-actions/routing-and-action-selection
-https://www.strathweb.com/2013/04/asp-net-web-api-and-greedy-query-string-parameter-binding/
 
 https://dzone.com/articles/a-few-great-ways-to-consume-restful-apis-in-c
 https://dzone.com/articles/getting-started-with-antlr-in-c
+
+Avoid conflicts with binding in runtime node in web.config or app.config
