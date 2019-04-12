@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Mapster;
 using SmartAdLibrary.Model;
+using SmartAdLibrary.Models;
 using WebAPI.Models.CriteriaDto;
 using WebAPI.Models.Dto;
 using WebAPI.Utils;
@@ -10,18 +11,18 @@ using SmartAdServices = SmartAdLibrary.Services;
 namespace WebAPI.Services.Impl
 {
     [Injectable]
-    public class ProductService : IProductService
+    public class ProductApiService : IProductApiService
     {
         private readonly SmartAdServices.IProductService _smartAdService;
 
-        public ProductService(SmartAdServices.IProductService smartAdService)
+        public ProductApiService(SmartAdServices.IProductService smartAdService)
         {
             _smartAdService = smartAdService;
         }
 
         public ProductDto FindOne(int id)
         {
-            var products = _smartAdService.GetAll();
+            var products = _smartAdService.Load();
             var product = products.First(p => p.UniqueId == id);
             
             return product.Adapt<ProductDto>();
@@ -29,13 +30,13 @@ namespace WebAPI.Services.Impl
 
         public IList<ProductDto> FindAll()
         {
-            var products = _smartAdService.GetAll();
+            var products = _smartAdService.Load();
             return products.Adapt<IList<ProductDto>>();
         }
 
         public IList<ProductDto> Search(ProductSearchCriteria criteria)
         {
-            var products = _smartAdService.GetAll();
+            var products = _smartAdService.Load();
             IEnumerable<Product> filteredProducts = products;
             
             if (criteria.Make != null)

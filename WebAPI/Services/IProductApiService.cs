@@ -4,7 +4,7 @@ using WebAPI.Models.Dto;
 
 namespace WebAPI.Services
 {
-    public interface IProductService
+    public interface IProductApiService
     {
         ProductDto FindOne(int id);
         

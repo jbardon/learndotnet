@@ -1,75 +1,48 @@
 using System.Collections.Generic;
-using SmartAdLibrary.Model;
+using Autofac.Features.AttributeFilters;
+using SmartAdLibrary.BusinessChecks.Product;
+using SmartAdLibrary.DataAccess;
+using SmartAdLibrary.Models;
+using SmartAdLibrary.Utils;
 
 namespace SmartAdLibrary.Services.Impl
 {
     public class ProductService : IProductService
     {
-        public IList<Product> GetAll()
+        private readonly IBusinessCheck<ProductBusinessCheckContext> _businessChecks;
+        private readonly IProductDataAccess _dataAccess;
+
+        public ProductService(
+            //[WithKey("ProductBusinessChecks")] IBusinessCheck<ProductBusinessCheckContext> businessChecks,
+            [KeyFilter("ProductBusinessChecks")] IBusinessCheck<ProductBusinessCheckContext> businessChecks,
+            IProductDataAccess dataAccess)
         {
-            return new List<Product>
+            _businessChecks = businessChecks;
+            _dataAccess = dataAccess;
+        }
+
+        public int Create(Product product)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IList<Product> Load()
+        {
+            return _dataAccess.Load();
+        }
+
+        public void Update(Product product)
+        {
+            var context = new ProductBusinessCheckContext()
             {
-                new Product()
-                {
-                    UniqueId = 1,
-                    Manufacturer = "Mir",
-                    FullName = "Lessive liquide Mir Raviveur de Blancheur",
-                    Price = 4.93,
-                    Quantity = new Quantity()
-                    {
-                        Unity = MeasurementUnit.Liter,
-                        Value = 1.5
-                    }
-                },
-                new Product()
-                {
-                    UniqueId = 2,
-                    Manufacturer = "Aquafresh",
-                    FullName = "Dentifrice Aquafresh Night repair",
-                    Price = 1.97,
-                    Quantity = new Quantity()
-                    {
-                        Unity = MeasurementUnit.Liter,
-                        Value = 0.150
-                    }
-                },
-                new Product()
-                {
-                    UniqueId = 2,
-                    Manufacturer = "Plantation",
-                    FullName = "Café en capsule Plantation Cappuccino - x8",
-                    Price = 2.84,
-                    Quantity = new Quantity()
-                    {
-                        Unity = MeasurementUnit.Gram,
-                        Value = 166.4
-                    }
-                },
-                new Product()
-                {
-                    UniqueId = 2,
-                    Manufacturer = "Nos régions ont du talent",
-                    FullName = "Fromage Brillat Savarin 38%mg Nos Régions ont du Talent",
-                    Price = 2.70,
-                    Quantity = new Quantity()
-                    {
-                        Unity = MeasurementUnit.Gram,
-                        Value = 200
-                    }
-                },
-                new Product()
-                {
-                    UniqueId = 2,
-                    Manufacturer = "Nestea",
-                    FullName = "Thé glacé Nestea Thé vert,citron, vert,menthe",
-                    Price = 1.50,
-                    Quantity = new Quantity()
-                    {
-                        Unity = MeasurementUnit.Liter,
-                        Value = 1
-                    }
-                }
+                NewProduct = product
             };
+            _businessChecks.Execute(context);
+        }
+
+        public void Delete(int id)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -10,9 +10,9 @@ namespace WebAPI.Controllers
     [RoutePrefix("api/product")]
     public class ProductController : ApiController
     {
-        private readonly IProductService _service;
+        private readonly IProductApiService _service;
 
-        public ProductController(IProductService service)
+        public ProductController(IProductApiService service)
         {
             _service = service;
         }

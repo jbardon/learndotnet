@@ -39,7 +39,6 @@ namespace WebAPI
                     .Add(new MediaTypeHeaderValue("text/html"));
             */
 
-
             /**
                 config.Routes.MapHttpRoute(
                     name: "DefaultApi",

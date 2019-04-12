@@ -1,5 +1,6 @@
 using Mapster;
 using SmartAdLibrary.Model;
+using SmartAdLibrary.Models;
 using WebAPI.Models.Dto;
 using WebAPI.Utils;
 

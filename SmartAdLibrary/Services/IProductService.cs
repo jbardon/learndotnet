@@ -1,10 +1,17 @@
 using System.Collections.Generic;
 using SmartAdLibrary.Model;
+using SmartAdLibrary.Models;
 
 namespace SmartAdLibrary.Services
 {
     public interface IProductService
     {
-        IList<Product> GetAll();
+        int Create(Product product);
+        
+        IList<Product> Load();
+
+        void Update(Product product);
+        
+        void Delete(int id);
     }
 }

@@ -5,13 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="BusinessChecks" />
-    <Folder Include="DataAccess" />
-    <Folder Include="Sql" />
+    <Folder Include="App_Data" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.9.2" />
+    <!--<PackageReference Include="Autofac.Extras.Attributed" Version="3.3.0" /> WithAttributeFilter not work -->
+    <PackageReference Include="Functional.Maybe" Version="2.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Configuration" />
   </ItemGroup>
 
 </Project>
