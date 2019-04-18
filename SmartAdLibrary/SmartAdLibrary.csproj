@@ -18,4 +18,13 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Sql\Product_Load.sql" />
+    <EmbeddedResource Include="Sql\Product_Load.sql" />
+    <None Remove="App_Data\Database\LearndotnetDB.mdf" />
+    <EmbeddedResource Include="App_Data\Database\LearndotnetDB.mdf" />
+    <None Remove="App_Data\Database\LearndotnetDB_log.ldf" />
+    <EmbeddedResource Include="App_Data\Database\LearndotnetDB_log.ldf" />
+  </ItemGroup>
+
 </Project>

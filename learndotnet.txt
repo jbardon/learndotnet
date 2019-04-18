@@ -59,12 +59,8 @@ https://docs.microsoft.com/en-us/aspnet/web-api/overview/web-api-routing-and-act
 https://dzone.com/articles/a-few-great-ways-to-consume-restful-apis-in-c
 https://dzone.com/articles/getting-started-with-antlr-in-c
 
-Avoid conflicts with binding in runtime node in web.config or app.config
-Found conflicts between different versions of the same dependent assembly.
-
 https://stackoverflow.com/questions/7667630/can-you-create-sql-views-stored-procedure-using-entity-framework-4-1-code-firs
 
 
 https://github.com/dvabuzyarov/Autofac.Extras.RegistrationAttributes
 https://github.com/autofac/Autofac.Extras.DynamicProxy
-vs 

@@ -13,7 +13,7 @@ namespace SmartAdLibrary.Services.Impl
         private readonly IProductDataAccess _dataAccess;
 
         public ProductService(
-            //[WithKey("ProductBusinessChecks")] IBusinessCheck<ProductBusinessCheckContext> businessChecks,
+            // Old way: WithKey attribute
             [KeyFilter("ProductBusinessChecks")] IBusinessCheck<ProductBusinessCheckContext> businessChecks,
             IProductDataAccess dataAccess)
         {

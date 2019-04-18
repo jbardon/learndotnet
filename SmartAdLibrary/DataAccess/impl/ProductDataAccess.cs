@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using SmartAdLibrary.Model;
 using SmartAdLibrary.Models;
 using SmartAdLibrary.Utils;
@@ -25,9 +26,10 @@ namespace SmartAdLibrary.DataAccess.impl
             
             try
             {
-                //var query = FileLoader.LoadFile("SmartAdLibrary.Sql.Product_Load.sql");
+                var query = FileLoader.LoadFile("SmartAdLibrary.Sql.Product_Load.sql");                
+                //var query = "[dal].[Product_Load]";
                 return _dbManager.ExecuteReader<List<Product>>(
-                    "[dal].[Product_Load]",
+                    query,
                     parameters,
                     (reader, result) =>
                     {
@@ -37,10 +39,9 @@ namespace SmartAdLibrary.DataAccess.impl
             }
             catch (SqlException ex)
             {
-               // throw DealsDataAccessHelper.EnhanceSqlException(ex, user);
+                throw ex;
+                // throw DealsDataAccessHelper.EnhanceSqlException(ex, user);
             }
-            
-            return new List<Product>();
         }
     }
 }

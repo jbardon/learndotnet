@@ -14,8 +14,8 @@ namespace SmartAdLibrary.BusinessChecks.Product
 
             builder
                 .Register(BuildBusinessChecksOrchestrator)
+                // Old way: Named
                 .Keyed<IBusinessCheck<ProductBusinessCheckContext>>("ProductBusinessChecks").SingleInstance();
-                //.Named<IBusinessCheck<ProductBusinessCheckContext>>("ProductBusinessChecks").SingleInstance();                
         }
 
         private static void RegisterBusinessChecks(ContainerBuilder builder)
