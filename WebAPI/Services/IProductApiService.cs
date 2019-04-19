@@ -11,5 +11,11 @@ namespace WebAPI.Services
         IList<ProductDto> FindAll();
         
         IList<ProductDto> Search(ProductSearchCriteria criteria);
+
+        int Create(ProductDto product);
+
+        void Delete(int id);
+
+        void Update(ProductDto product);
     }
 }

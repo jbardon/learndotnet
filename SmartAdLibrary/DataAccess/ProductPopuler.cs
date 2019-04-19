@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using SmartAdLibrary.Model;
 using SmartAdLibrary.Models;
 
 namespace SmartAdLibrary.DataAccess
@@ -27,7 +26,7 @@ namespace SmartAdLibrary.DataAccess
                 UniqueId = (int) reader[0],
                 FullName = (string) reader[1],
                 Manufacturer = (string) reader[2],
-                Price = (double) reader[3]                
+                Price = double.Parse(reader[3].ToString())                
             };
         }
     }

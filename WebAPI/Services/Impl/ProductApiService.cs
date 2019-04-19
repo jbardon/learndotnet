@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Mapster;
-using SmartAdLibrary.Model;
 using SmartAdLibrary.Models;
 using WebAPI.Models.CriteriaDto;
 using WebAPI.Models.Dto;
@@ -64,6 +63,21 @@ namespace WebAPI.Services.Impl
             }
 
             return filteredProducts.ToList().Adapt<IList<ProductDto>>();
+        }
+
+        public int Create(ProductDto product)
+        {
+            return _smartAdService.Create(product.Adapt<Product>());
+        }
+
+        public void Delete(int id)
+        {
+            _smartAdService.Delete(id);
+        }
+
+        public void Update(ProductDto product)
+        {
+            _smartAdService.Update(product.Adapt<Product>());
         }
     }
 }

@@ -9,5 +9,7 @@ namespace SmartAdLibrary.Utils
     {
         T ExecuteReader<T>(string query, IList<SqlParameter> parameters, 
             Func<DbDataReader, T, T> callback) where T : new();
+
+        T ExecuteScalar<T>(string query, IList<SqlParameter> parameters);
     }
 }

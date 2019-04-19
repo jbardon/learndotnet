@@ -6,6 +6,8 @@ namespace WebAPI.Models.Dto
         
         public string Name { get; set; }
         
+        public string Manufacturer { get; set; }
+        
         public double Price { get; set; }
     }
 }

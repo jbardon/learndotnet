@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.ValueProviders;
 using WebAPI.Models.CriteriaDto;
+using WebAPI.Models.Dto;
 using WebAPI.Services;
 
 namespace WebAPI.Controllers
@@ -41,6 +42,30 @@ namespace WebAPI.Controllers
         public HttpResponseMessage Search([FromUri] ProductSearchCriteria criteria){
             var products = _service.Search(criteria);
             return Request.CreateResponse(HttpStatusCode.OK, products);
+        }
+
+        [HttpPost]
+        [Route("")]
+        public HttpResponseMessage Create([FromBody] ProductDto product)
+        {
+            var id = _service.Create(product);
+            return Request.CreateResponse(HttpStatusCode.OK, id);
+        }
+
+        [HttpPut]
+        [Route("")]
+        public HttpResponseMessage Update([FromBody] ProductDto product)
+        {
+            _service.Update(product);
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+        
+        [HttpDelete]
+        [Route("")]
+        public HttpResponseMessage Delete(int id)
+        {
+            _service.Delete(id);
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }

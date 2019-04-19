@@ -1,4 +1,4 @@
-namespace SmartAdLibrary.Model
+namespace SmartAdLibrary.Models
 {
     public class Quantity
     {

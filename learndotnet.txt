@@ -64,3 +64,5 @@ https://stackoverflow.com/questions/7667630/can-you-create-sql-views-stored-proc
 
 https://github.com/dvabuzyarov/Autofac.Extras.RegistrationAttributes
 https://github.com/autofac/Autofac.Extras.DynamicProxy
+
+Next step: ManageAuthorization and Error handling

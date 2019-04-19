@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using SmartAdLibrary.Model;
 using SmartAdLibrary.Models;
 
 namespace SmartAdLibrary.DataAccess
@@ -7,5 +6,11 @@ namespace SmartAdLibrary.DataAccess
     public interface IProductDataAccess
     {
         IList<Product> Load();
+
+        void Update(Product product);
+
+        int Create(Product product);
+
+        void Delete(int id);
     }
 }

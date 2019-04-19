@@ -23,7 +23,7 @@ namespace SmartAdLibrary.Services.Impl
 
         public int Create(Product product)
         {
-            throw new System.NotImplementedException();
+            return _dataAccess.Create(product);
         }
 
         public IList<Product> Load()
@@ -38,11 +38,13 @@ namespace SmartAdLibrary.Services.Impl
                 NewProduct = product
             };
             _businessChecks.Execute(context);
+            
+            _dataAccess.Update(product);
         }
 
         public void Delete(int id)
         {
-            throw new System.NotImplementedException();
+            _dataAccess.Delete(id);
         }
     }
 }

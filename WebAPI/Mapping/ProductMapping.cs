@@ -1,5 +1,4 @@
 using Mapster;
-using SmartAdLibrary.Model;
 using SmartAdLibrary.Models;
 using WebAPI.Models.Dto;
 using WebAPI.Utils;
@@ -14,7 +13,6 @@ namespace WebAPI.Mapping
                 .NewConfig()
                 .Map("UniqueId", "Id")
                 .Map("FullName", "Name");
-            //.AddDefaultFieldMapping();
 
             /*
             TypeAdapterConfig<ProductDto, Product>
@@ -28,6 +26,7 @@ namespace WebAPI.Mapping
                 .Map(d => d.Name, s => s.FullName);
         }
 
+        /*
         private static Product ConvertTo(ProductDto dto)
         {
             var domain = new Product();
@@ -38,5 +37,6 @@ namespace WebAPI.Mapping
                     
             return domain;
         }
+        */
     }
 }

@@ -1,5 +1,3 @@
-using SmartAdLibrary.Model;
-
 namespace SmartAdLibrary.Models
 {
     public class Product
