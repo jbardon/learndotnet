@@ -76,16 +76,33 @@ ALL not work
 
 ```
 $ sqllocaldb c learndotnet -s
+$ sqlcmd -S "(LocalDB)\learndotnet" -Q "create database learndotnet on (filename='C:\smartdays\learndotnet\SmartAdLibrary\App_Data\Database\LearndotnetDB.mdf') for attach"
 $ sqllocaldb share "DESKTOP-2M40LNJ\jbardon" learndotnet learndotnet
 $ sqllocaldb stop learndotnet
 $ sqllocaldb start learndotnet
-$ sqlcmd -S "(LocalDB)\learndotnet" -Q "create database learndotnet on (filename='C:\smartdays\learndotnet\SmartAdLibrary\App_Data\Database\LearndotnetDB.mdf') for attach"
-$ sqlcmd -S "(LocalDB)\learndotnet" -Q "exec sp_addsrvrolemember 'DESKTOP-2M40LNJ\jbardon', N'sysadmin'"
+$ sqllocaldb i learndotnet
 
 # [IIS APPPOOL/SITE NAME]
-$ sqlcmd -S "(LocalDB)\learndotnet" -Q "create login [IIS APPPOOL\learndotnet.webapi.com] from windows; exec sp_addsrvrolemember 'IISAPPPOOL\learndotnet.webapi.com', N'sysadmin'"
+$ sqlcmd -S "np:\\[...]" -Q "exec sp_addsrvrolemember 'DESKTOP-2M40LNJ\jbardon', N'sysadmin'"
+$ sqlcmd -S "np:\\[...]" -Q "create login [IIS APPPOOL\learndotnet.webapi.com] from windows; exec sp_addsrvrolemember 'IIS APPPOOL\learndotnet.webapi.com', N'sysadmin'"
+
+
+
 $ sqlcmd -S "np:\[...]" -Q "create login test with password = 'test'; create user test"
 ```
+
+sqlcmd
+Sqlcmd : erreur : Microsoft ODBC Driver 13 for SQL Server : Named Pipes Provider: Could not open a connection to SQL Server [2]. .
+Sqlcmd : erreur : Microsoft ODBC Driver 13 for SQL Server : Login timeout expired.
+Sqlcmd : erreur : Microsoft ODBC Driver 13 for SQL Server : A network-related or instance-specific error has occurred while establishing a connection to SQL Server. 
+Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online..
+
+postman
+Une erreur liée au réseau ou spécifique à l'instance s'est produite lors de l'établissement d'une connexion à SQL Server. 
+Le serveur est introuvable ou n'est pas accessible. Vérifiez que le nom de l'instance est correct et que SQL Server est configuré pour autoriser les connexions distantes. 
+(provider: Named Pipes Provider, error: 40 - Impossible d'ouvrir une connexion à SQL Server)
+
+see: https://stackoverflow.com/questions/10214688/why-cant-i-connect-to-a-sql-server-2012-localdb-shared-instance/21036734
 
 https://codemegeek.com/2018/05/13/configure-iis-to-us-localdb/
 https://forums.asp.net/t/2061083.aspx?Cannot+attach+the+file+mdf+as+database
