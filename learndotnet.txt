@@ -66,3 +66,13 @@ https://github.com/dvabuzyarov/Autofac.Extras.RegistrationAttributes
 https://github.com/autofac/Autofac.Extras.DynamicProxy
 
 Next step: ManageAuthorization and Error handling
+
+----
+
+View ddl manifest: /c/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.6.1 Tools/ildasm.exe Machin.dll
+View nugget content: ~/.nuget/packages/ rename .nupkg to .zip
+View public key token for dll: /c/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.6.1 Tools/sn -T Machin.dll
+
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0\Bin\MSBuild.exe Machin.sln /target:Rebuild /property:Configuration=Debug /property:Platform="Any CPU"
+dotnet build Machin.csproj
+nuget restore

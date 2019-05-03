@@ -16,7 +16,7 @@ namespace WebAPI.Controllers
         }
         
         [HttpGet]
-        [Route("{id:int:min(1)}")]
+        [Route("{id:int:min(1)}", Name = "FindOne")] // Not cool
         public IHttpActionResult FindOne(int id){
             var product = _service.FindOne(id);
             return Ok(product);
@@ -46,7 +46,7 @@ namespace WebAPI.Controllers
         public IHttpActionResult Create([FromBody] ProductDto product)
         {
             var id = _service.Create(product);
-            return Ok(id);
+            return CreatedAtRoute(nameof(FindOne), new {id}, id); // Relies on Name= on FindOne !!
         }
 
         [HttpPut]
