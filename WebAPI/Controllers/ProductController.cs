@@ -1,7 +1,4 @@
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.ValueProviders;
 using WebAPI.Models.CriteriaDto;
 using WebAPI.Models.Dto;
 using WebAPI.Services;
@@ -20,17 +17,17 @@ namespace WebAPI.Controllers
         
         [HttpGet]
         [Route("{id:int:min(1)}")]
-        public HttpResponseMessage FindOne(int id){
+        public IHttpActionResult FindOne(int id){
             var product = _service.FindOne(id);
-            return Request.CreateResponse(HttpStatusCode.OK, product);
+            return Ok(product);
         }
 
         [HttpGet]
         [Route("")]
-        public HttpResponseMessage FindAll()
+        public IHttpActionResult FindAll()
         {
             var products = _service.FindAll();
-            return Request.CreateResponse(HttpStatusCode.OK, products);
+            return Ok(products);
         }
         
         // GET api/product/search?name=a&name=b&maxprice=3 (no name=a,b)
@@ -39,33 +36,33 @@ namespace WebAPI.Controllers
         // - with CustomTypeConverter: TypeConverter(typeof(NullableIntListConverter))
         [HttpGet]
         [Route("search")]        
-        public HttpResponseMessage Search([FromUri] ProductSearchCriteria criteria){
+        public IHttpActionResult Search([FromUri] ProductSearchCriteria criteria){
             var products = _service.Search(criteria);
-            return Request.CreateResponse(HttpStatusCode.OK, products);
+            return Ok(products);
         }
 
         [HttpPost]
         [Route("")]
-        public HttpResponseMessage Create([FromBody] ProductDto product)
+        public IHttpActionResult Create([FromBody] ProductDto product)
         {
             var id = _service.Create(product);
-            return Request.CreateResponse(HttpStatusCode.OK, id);
+            return Ok(id);
         }
 
         [HttpPut]
         [Route("")]
-        public HttpResponseMessage Update([FromBody] ProductDto product)
+        public IHttpActionResult Update([FromBody] ProductDto product)
         {
             _service.Update(product);
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return Ok();
         }
         
         [HttpDelete]
         [Route("")]
-        public HttpResponseMessage Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
             _service.Delete(id);
-            return Request.CreateResponse(HttpStatusCode.OK);
+            return Ok();
         }
     }
 }

@@ -12,14 +12,4 @@ namespace SmartAdLibrary.Models
         
         public Quantity Quantity { get; set; }
     }
-    
-    /**
-     * CREATE TABLE [dbo].[Product]
-        (
-            [id] INT NOT NULL PRIMARY KEY, 
-            [name] NVARCHAR(50) NULL, 
-            [manufacturer] NVARCHAR(MAX) NULL, 
-            [price] DECIMAL NULL
-        )
-     */
 }

@@ -1,6 +1,4 @@
-﻿using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace WebAPI.Controllers.GettingStarted
 {
@@ -8,13 +6,13 @@ namespace WebAPI.Controllers.GettingStarted
     {
         
         // GET api/verbs
-        public HttpResponseMessage Get()
+        public IHttpActionResult Get()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, "Default behavior");
+            return Ok("Default behavior");
         }
         
         // GET api/verbs/5
-        public HttpResponseMessage Get([FromUri] int id)
+        public IHttpActionResult Get([FromUri] int id)
         {            
             var a = new Toto()
             {
@@ -24,25 +22,25 @@ namespace WebAPI.Controllers.GettingStarted
             
             // When returning object, ASP.NET chooses automatically the Formatter (serializer)
             // The formatter depends on Request Accept Header and returned payload type (serializable or not ?)
-            return Request.CreateResponse(HttpStatusCode.OK, a/*, Configuration.Formatters.JsonFormatter*/);
+            return Ok(a/*, Configuration.Formatters.JsonFormatter*/);
         }
         
         // POST api/verbs
-        public HttpResponseMessage Post([FromBody] Toto value)
+        public IHttpActionResult Post([FromBody] Toto value)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, ("POST", value));
+            return Ok(("POST", value));
         }
 
         // PUT api/verbs/5
-        public HttpResponseMessage Put(int id, [FromBody] Toto value)
+        public IHttpActionResult Put(int id, [FromBody] Toto value)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, ("PUT", id, value));
+            return Ok(("PUT", id, value));
         }
 
         // DELETE api/values/5
-        public HttpResponseMessage Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, ("DELETE", id));
+            return Ok(("DELETE", id));
         }
     }
     

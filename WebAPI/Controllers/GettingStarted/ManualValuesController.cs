@@ -1,6 +1,4 @@
-﻿using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Http.ValueProviders;
 using System.Web.Http.ValueProviders.Providers;
 
@@ -14,24 +12,24 @@ namespace WebAPI.Controllers.GettingStarted
         // Not necessary to set [HttpGet] because of action name
         // GET /api/manual
         [Route("")]
-        public HttpResponseMessage Get()
+        public IHttpActionResult Get()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, "Empty route for controller root route");
+            return Ok("Empty route for controller root route");
         }
 
         // GET /api/manual/action/name
         [Route("action/name")]
-        public HttpResponseMessage GetSpecifiedName()
+        public IHttpActionResult GetSpecifiedName()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, "Specified route name with http verb in method name");
+            return Ok("Specified route name with http verb in method name");
         }
 
         // POST /api/manual/action/name
         [HttpPost]
         [Route("action/name")]
-        public HttpResponseMessage SpecifiedNameNoHttpVerb()
+        public IHttpActionResult SpecifiedNameNoHttpVerb()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, "Specified route name with http verb annotation");
+            return Ok("Specified route name with http verb annotation");
         }
         
         // PathParam only
@@ -41,21 +39,21 @@ namespace WebAPI.Controllers.GettingStarted
         // GET api/manual/path-param/{id}
         [HttpGet]
         [Route("path-param/{id:int}/{name}")]
-        public HttpResponseMessage PathParams([FromUri] int id, string name)
+        public IHttpActionResult PathParams([FromUri] int id, string name)
         {
             // Install System.ValueTuple
             var tuple = (id: id, name: name);
-            return Request.CreateResponse(HttpStatusCode.OK, tuple);
+            return Ok(tuple);
         }
      
         // QueryParam only
         // GET api/manual/query-param?id=4&name=test
         [HttpGet]
         [Route("query-param")]
-        public HttpResponseMessage QueryParams(int id, string name)
+        public IHttpActionResult QueryParams(int id, string name)
         {
             var tuple = (id: id, name: name);
-            return Request.CreateResponse(HttpStatusCode.OK, tuple);
+            return Ok(tuple);
         }
         
         // PathParam and QueryParams
@@ -63,10 +61,10 @@ namespace WebAPI.Controllers.GettingStarted
         // GET api/manual/both-params/{id}?name=fr
         [HttpGet]
         [Route("both-params/{id}")]
-        public HttpResponseMessage PathAndQueryParams(string name, int id)
+        public IHttpActionResult PathAndQueryParams(string name, int id)
         {
             var tuple = (id: id, name: name);
-            return Request.CreateResponse(HttpStatusCode.OK, tuple);
+            return Ok(tuple);
         }
         
         // If id appears in both RouteDictionary and QueryString (with ?), the QueryString overloads
@@ -75,10 +73,10 @@ namespace WebAPI.Controllers.GettingStarted
         // GET api/manual/both-params/{id}?name=fr?id=1
         [HttpGet]
         [Route("both-params/no-overwrite/{id}")]
-        public HttpResponseMessage PathAndQueryParamsNoOverwrite(string name, [ValueProvider(typeof(RouteDataValueProviderFactory))] int id)
+        public IHttpActionResult PathAndQueryParamsNoOverwrite(string name, [ValueProvider(typeof(RouteDataValueProviderFactory))] int id)
         {
             var tuple = (id: id, name: name);
-            return Request.CreateResponse(HttpStatusCode.OK, tuple);
+            return Ok(tuple);
         }
         
     }

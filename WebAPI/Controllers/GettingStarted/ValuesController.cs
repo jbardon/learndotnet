@@ -1,6 +1,4 @@
-﻿using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace WebAPI.Controllers.GettingStarted
 {
@@ -11,39 +9,39 @@ namespace WebAPI.Controllers.GettingStarted
     {
         // GET api/values
         // Add id to avoid collision with GetActionName and ActionName
-        public HttpResponseMessage Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, "Action with http verb as method name");
+            return Ok("Action with http verb as method name");
         }
         
         // Because of configured api/{controller}/{action} route
         // GET api/values/GetActionName
-        public HttpResponseMessage GetActionName()
+        public IHttpActionResult GetActionName()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, "Action with method name defining url param and http verb");
+            return Ok("Action with method name defining url param and http verb");
         }
         
         // GET api/values/ActionName
         [HttpGet]
-        public HttpResponseMessage ActionName()
+        public IHttpActionResult ActionName()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, "Action with method name defining url param and annotation defining http verb");
+            return Ok("Action with method name defining url param and annotation defining http verb");
         }
         
         // GET api/values/CustomActionName
         [HttpGet]
         [ActionName("CustomActionName")]
-        public HttpResponseMessage NotCustomActionName()
+        public IHttpActionResult NotCustomActionName()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, "Action with custom name from annotation");
+            return Ok("Action with custom name from annotation");
         }
         
         // Disable this action, not an endpoint
         // GET api/values/GetNotAnAction
         [NonAction]
-        public HttpResponseMessage GetNotAnAction()
+        public IHttpActionResult GetNotAnAction()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, "Not map this method as an action");
+            return Ok("Not map this method as an action");
         }
     }
 }
